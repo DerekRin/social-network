@@ -1,5 +1,4 @@
 const { Thoughts } = require("../models");
-const { db } = require("../models/thoughts");
 
 const ThoughtsController = {
   getAllThoughts(req, res) {
@@ -67,7 +66,7 @@ const ThoughtsController = {
       })
       .catch((err) => res.status(400).json(err));
   },
-  deleteThougths({ params }, res) {
+  deleteThoughts({ params }, res) {
     Thoughts.findOneAndDelete({ _id: params.thoughtsId })
       .then((deletedThoughts) => {
         if (!deletedThoughts) {
