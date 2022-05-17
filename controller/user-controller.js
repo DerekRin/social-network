@@ -28,6 +28,7 @@ const UserController = {
   },
 
   createUser({ body }, res) {
+    console.log(body);
     User.create(body)
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(400).json(err));
@@ -66,7 +67,7 @@ const UserController = {
     )
       .then((dbUserData) => {
         if (!dbUserData) {
-          res.status(404).json({ message: "o user found with this userId" });
+          res.status(404).json({ message: "No user found with this userId" });
           return;
         }
         User.findOneAndUpdate(
